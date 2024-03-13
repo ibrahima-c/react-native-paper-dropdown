@@ -3,7 +3,7 @@ import { Checkbox, Divider, Menu, TextInput, TouchableRipple, useTheme, } from "
 import React, { forwardRef, useEffect, useState, useCallback, Fragment, } from "react";
 const DropDown = forwardRef((props, ref) => {
     const activeTheme = useTheme();
-    const { multiSelect = false, visible, onDismiss, showDropDown, value, setValue, activeColor, mode, label, placeholder, inputProps, list, dropDownContainerMaxHeight, dropDownContainerHeight, theme, dropDownStyle, dropDownItemStyle, dropDownItemSelectedStyle, dropDownItemTextStyle, dropDownItemSelectedTextStyle, accessibilityLabel, } = props;
+    const { multiSelect = false, textColor, visible, onDismiss, showDropDown, value, setValue, activeColor, mode, label, placeholder, inputProps, list, dropDownContainerMaxHeight, dropDownContainerHeight, theme, dropDownStyle, dropDownItemStyle, dropDownItemSelectedStyle, dropDownItemTextStyle, dropDownItemSelectedTextStyle, accessibilityLabel, } = props;
     const [displayValue, setDisplayValue] = useState("");
     const [inputLayout, setInputLayout] = useState({
         height: 0,
@@ -54,7 +54,7 @@ const DropDown = forwardRef((props, ref) => {
     }, [value]);
     return (<Menu visible={visible} onDismiss={onDismiss} theme={theme} anchor={<TouchableRipple ref={ref} onPress={showDropDown} onLayout={onLayout} accessibilityLabel={accessibilityLabel}>
             <View pointerEvents={"none"}>
-              <TextInput value={displayValue} mode={mode} label={label} placeholder={placeholder} pointerEvents={"none"} theme={theme} right={<TextInput.Icon name={visible ? "menu-up" : "menu-down"}/>} {...inputProps}/>
+              <TextInput textColor={textColor} value={displayValue} mode={mode} label={label} placeholder={placeholder} pointerEvents={"none"} theme={theme} right={<TextInput.Icon name={visible ? "menu-up" : "menu-down"}/>} {...inputProps}/>
             </View>
           </TouchableRipple>} style={{
             maxWidth: inputLayout?.width,
